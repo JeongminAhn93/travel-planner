@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Travel Planner — Sign up</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F6F3EC; --surface:#FFFFFF; --ink:#232323; --muted:#6B6455;
+    --border:#E4DFD3; --accent:#146B5E; --accent-hover:#0F5147; --accent-soft:#E7F1EE;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;min-height:100vh}
+  .ref-banner{background:#1F1B14;color:#D8D2C2;font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+    padding:8px 20px;display:flex;justify-content:space-between}
+  .ref-banner a{color:#D8D2C2;text-decoration:underline}
+  .wrap{min-height:calc(100vh - 36px);display:flex;align-items:center;justify-content:center;padding:40px 20px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:44px 40px;width:100%;max-width:380px}
+  .logo{font-family:'Fraunces',serif;font-weight:600;font-size:24px;margin-bottom:6px}
+  .sub{color:var(--muted);font-size:14px;margin-bottom:28px}
+  label{display:block;font-size:13px;color:var(--muted);margin:0 0 6px}
+  .field{margin-bottom:16px}
+  input{width:100%;height:44px;border:1px solid var(--border);border-radius:10px;padding:0 14px;
+    font-family:'Inter',sans-serif;font-size:14px;background:#FCFBF8}
+  input:focus{outline:none;border-color:var(--accent)}
+  .btn{width:100%;height:46px;border-radius:10px;border:none;font-family:'Inter',sans-serif;
+    font-weight:600;font-size:14px;cursor:pointer}
+  .btn-primary{background:var(--accent);color:#fff;margin-top:8px}
+  .btn-primary:hover{background:var(--accent-hover)}
+  .link-row{text-align:center;margin-top:16px;font-size:13px;color:var(--muted)}
+  .link-row a{color:var(--accent);text-decoration:none;font-weight:600}
+</style>
+</head>
+<body>
+  <div class="ref-banner"><span>Reference — Sign up</span><a href="workflow.html">← workflow 전체 보기</a></div>
+  <div class="wrap">
+    <div class="card">
+      <div class="logo">Travel Planner</div>
+      <div class="sub">계정을 만들고 친구들을 초대해보세요</div>
+      <div class="field"><label>Name</label><input type="text" placeholder="홍길동"></div>
+      <div class="field"><label>Email</label><input type="email" placeholder="you@email.com"></div>
+      <div class="field"><label>Password</label><input type="password" placeholder="••••••••"></div>
+      <div class="field"><label>Confirm password</label><input type="password" placeholder="••••••••"></div>
+      <button class="btn btn-primary" onclick="location.href='trip-list.html'">Create account</button>
+      <div class="link-row">이미 계정이 있나요? <a href="login.html">Log in</a></div>
+    </div>
+  </div>
+</body>
+</html>

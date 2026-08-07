@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Travel Planner — Trip detail</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F6F3EC; --surface:#FFFFFF; --ink:#232323; --muted:#6B6455;
+    --border:#E4DFD3; --accent:#146B5E; --accent-hover:#0F5147; --accent-soft:#E7F1EE;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;min-height:100vh}
+  .ref-banner{background:#1F1B14;color:#D8D2C2;font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+    padding:8px 20px;display:flex;justify-content:space-between}
+  .ref-banner a{color:#D8D2C2;text-decoration:underline}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:20px 40px;
+    border-bottom:1px solid var(--border);background:var(--surface)}
+  .back{font-size:13px;color:var(--muted);text-decoration:none;cursor:pointer}
+  .content{max-width:720px;margin:0 auto;padding:32px 24px}
+  .title{font-family:'Fraunces',serif;font-weight:600;font-size:30px;margin-bottom:4px}
+  .dates{color:var(--muted);font-size:14px;margin-bottom:20px}
+  .stats{display:flex;gap:14px;margin-bottom:22px}
+  .stat{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 18px;flex:1}
+  .stat-label{font-size:12px;color:var(--muted);margin-bottom:4px}
+  .stat-value{font-family:'Fraunces',serif;font-weight:600;font-size:18px}
+  .members-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+  .avatars{display:flex}
+  .avatar{width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;
+    font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;
+    border:2px solid var(--bg);margin-left:-8px}
+  .avatar:first-child{margin-left:0}
+  .avatar.alt{background:#B0765A}
+  .avatar.alt2{background:#5A7EB0}
+  .btn{height:36px;padding:0 14px;border-radius:9px;border:1px solid var(--border);
+    background:var(--surface);font-size:13px;font-weight:600;cursor:pointer}
+  .btn:hover{background:var(--accent-soft);border-color:var(--accent)}
+  .btn-primary{background:var(--accent);color:#fff;border:none}
+  .btn-primary:hover{background:var(--accent-hover)}
+  .section-title{font-family:'Fraunces',serif;font-weight:600;font-size:18px;margin-bottom:14px}
+  .day-group{margin-bottom:18px}
+  .day-label{font-size:13px;color:var(--muted);font-weight:600;margin-bottom:8px}
+  .sched-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;
+    padding:14px 16px;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;cursor:pointer}
+  .sched-item:hover{border-color:var(--accent)}
+  .sched-title{font-weight:600;font-size:14px;margin-bottom:2px}
+  .sched-loc{font-size:12px;color:var(--muted)}
+  .sched-time{font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+  <div class="ref-banner"><span>Reference — Trip detail</span><a href="workflow.html">← workflow 전체 보기</a></div>
+  <div class="topbar">
+    <a class="back" href="trip-list.html">← Trips</a>
+  </div>
+  <div class="content">
+    <div class="title">Japan</div>
+    <div class="dates">Aug 1 – Aug 7</div>
+    <div class="stats">
+      <div class="stat"><div class="stat-label">Budget</div><div class="stat-value">₩1,200,000</div></div>
+      <div class="stat"><div class="stat-label">Duration</div><div class="stat-value">7 days</div></div>
+      <div class="stat"><div class="stat-label">Schedules</div><div class="stat-value">2</div></div>
+    </div>
+    <div class="members-row">
+      <div class="avatars">
+        <div class="avatar">J</div>
+        <div class="avatar alt">M</div>
+        <div class="avatar alt2">K</div>
+      </div>
+      <button class="btn" onclick="alert('참여자 초대 (Trip member 추가)')">+ Invite</button>
+    </div>
+
+    <div class="section-title">Schedule</div>
+    <div class="day-group">
+      <div class="day-label">Aug 1</div>
+      <div class="sched-item" onclick="location.href='schedule.html'">
+        <div><div class="sched-title">Arrive at Narita airport</div><div class="sched-loc">Narita International Airport</div></div>
+        <div class="sched-time">14:30</div>
+      </div>
+    </div>
+    <div class="day-group">
+      <div class="day-label">Aug 2</div>
+      <div class="sched-item" onclick="location.href='schedule.html'">
+        <div><div class="sched-title">Senso-ji temple</div><div class="sched-loc">Asakusa, Tokyo</div></div>
+        <div class="sched-time">10:00</div>
+      </div>
+    </div>
+    <button class="btn btn-primary" onclick="location.href='schedule.html'">+ Add schedule</button>
+  </div>
+</body>
+</html>
