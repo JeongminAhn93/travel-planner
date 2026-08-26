@@ -4,15 +4,21 @@ import com.travelplanner.dto.LoginRequest;
 import com.travelplanner.dto.SignupRequest;
 import com.travelplanner.entity.User;
 import com.travelplanner.repository.UserRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(
+            UserRepository userRepository,
+            BCryptPasswordEncoder passwordEncoder
+    ) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public User signup(SignupRequest request) {
@@ -21,10 +27,13 @@ public class UserService {
             throw new IllegalArgumentException("Email already exists");
         }
 
+        String encodedPassword =
+                passwordEncoder.encode(request.getPassword());
+
         User user = new User(
                 request.getName(),
                 request.getEmail(),
-                request.getPassword()
+                encodedPassword
         );
 
         return userRepository.save(user);
@@ -36,7 +45,10 @@ public class UserService {
                 .orElseThrow(() ->
                         new IllegalArgumentException("Invalid email or password"));
 
-        if (!user.getPassword().equals(request.getPassword())) {
+        if (!passwordEncoder.matches(
+                request.getPassword(),
+                user.getPassword()
+        )) {
             throw new IllegalArgumentException("Invalid email or password");
         }
 
