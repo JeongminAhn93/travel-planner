@@ -1,5 +1,6 @@
 package com.travelplanner.controller;
 
+import com.travelplanner.dto.LoginRequest;
 import com.travelplanner.dto.SignupRequest;
 import com.travelplanner.entity.User;
 import com.travelplanner.service.UserService;
@@ -27,5 +28,14 @@ public class UserController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(user);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<User> login(
+            @Valid @RequestBody LoginRequest request) {
+
+        User user = userService.login(request);
+
+        return ResponseEntity.ok(user);
     }
 }
