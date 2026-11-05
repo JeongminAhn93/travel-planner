@@ -1,7 +1,9 @@
+
 package com.travelplanner.controller;
 
 import com.travelplanner.dto.LoginRequest;
 import com.travelplanner.dto.SignupRequest;
+import com.travelplanner.dto.UserResponse;
 import com.travelplanner.entity.User;
 import com.travelplanner.service.UserService;
 import jakarta.validation.Valid;
@@ -20,22 +22,22 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> signup(
+    public ResponseEntity<UserResponse> signup(
             @Valid @RequestBody SignupRequest request) {
 
         User user = userService.signup(request);
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(user);
+                .body(UserResponse.from(user));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<User> login(
+    public ResponseEntity<UserResponse> login(
             @Valid @RequestBody LoginRequest request) {
 
         User user = userService.login(request);
 
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(UserResponse.from(user));
     }
 }
