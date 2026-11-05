@@ -1,8 +1,11 @@
+
 package com.travelplanner.service;
 
 import com.travelplanner.dto.LoginRequest;
 import com.travelplanner.dto.SignupRequest;
 import com.travelplanner.entity.User;
+import com.travelplanner.exception.DuplicateResourceException;
+import com.travelplanner.exception.InvalidCredentialsException;
 import com.travelplanner.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -24,7 +27,7 @@ public class UserService {
     public User signup(SignupRequest request) {
 
         if (userRepository.existsByEmail(request.getEmail())) {
-            throw new IllegalArgumentException("Email already exists");
+            throw new DuplicateResourceException("Email already exists");
         }
 
         String encodedPassword =
@@ -43,13 +46,13 @@ public class UserService {
 
         User user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() ->
-                        new IllegalArgumentException("Invalid email or password"));
+                        new InvalidCredentialsException("Invalid email or password"));
 
         if (!passwordEncoder.matches(
                 request.getPassword(),
                 user.getPassword()
         )) {
-            throw new IllegalArgumentException("Invalid email or password");
+            throw new InvalidCredentialsException("Invalid email or password");
         }
 
         return user;

@@ -1,6 +1,8 @@
+
 package com.travelplanner.service;
 
 import com.travelplanner.entity.Trip;
+import com.travelplanner.exception.ResourceNotFoundException;
 import com.travelplanner.repository.TripRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -35,7 +37,8 @@ public class TripService {
     @Transactional(readOnly = true)
     public Trip getTripById(Long id) {
         return tripRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Trip not found: " + id));
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Trip not found: " + id));
     }
 
     @Transactional
